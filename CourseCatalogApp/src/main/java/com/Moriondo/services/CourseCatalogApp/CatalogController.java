@@ -40,12 +40,22 @@ public class CatalogController {
     @RequestMapping("/firstcourse")
     public String getSpecificCatalog(){
         Course course;
+        User user = new User();
         //String courseAppURL = "http://localhost:8080/1";
         InstanceInfo instanceInfo = client.getNextServerFromEureka("course-App",false);
         RestTemplate restTemplate = new RestTemplate();
         String courseAppURL =instanceInfo.getHomePageUrl();
         courseAppURL = courseAppURL +"/1";
+
         course = restTemplate.getForObject(courseAppURL, Course.class);
-        return ("First course is : "+course.getCoursename());
+
+        instanceInfo = client.getNextServerFromEureka("User-App",false);
+        String userAppURL =instanceInfo.getHomePageUrl();
+        userAppURL = userAppURL +"/" + course.getCourseid();
+
+        restTemplate.getForObject(userAppURL, String.class );
+
+        return ("First course is : "+course.getCoursename() + "******" +);
+
     }
 }
