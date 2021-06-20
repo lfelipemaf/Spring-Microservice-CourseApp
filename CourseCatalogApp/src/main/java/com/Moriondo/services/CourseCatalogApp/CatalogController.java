@@ -53,9 +53,9 @@ public class CatalogController {
         String userAppURL =instanceInfo.getHomePageUrl();
         userAppURL = userAppURL +"/" + course.getCourseid();
 
-        restTemplate.getForObject(userAppURL, String.class );
+        String userList = restTemplate.getForObject(userAppURL, String.class );
 
-        return ("First course is : "+course.getCoursename() + "******" +);
+        return ("First course is : "+course.getCoursename() + "****** and Enrolled user are ****" + userList);
 
     }
 }
