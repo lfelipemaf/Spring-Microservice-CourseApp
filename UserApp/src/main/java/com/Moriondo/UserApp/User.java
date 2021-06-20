@@ -8,7 +8,7 @@ import javax.persistence.IdClass;
 import java.math.BigInteger;
 
 @Entity
-@IdClass(CompositeKey.class)
+@IdClass(UserId.class)
 @JsonIgnoreProperties ({"hibernateLazyInitializer","handler"})
 public class User {
 
