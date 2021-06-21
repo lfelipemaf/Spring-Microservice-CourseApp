@@ -40,8 +40,7 @@ public class CatalogController {
     @RequestMapping("/firstcourse")
     public String getSpecificCatalog(){
         Course course;
-        User user = new User();
-        //String courseAppURL = "http://localhost:8080/1";
+        User  user;      //String courseAppURL = "http://localhost:8080/1";
         InstanceInfo instanceInfo = client.getNextServerFromEureka("course-App",false);
         RestTemplate restTemplate = new RestTemplate();
         String courseAppURL =instanceInfo.getHomePageUrl();
